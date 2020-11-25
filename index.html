@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기온별 옷차림 - 날씨 및 옷차림 추천</title>
+    <script src="main.js"></script>
+    <script src="https://kit.fontawesome.com/096073a2a8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="./img/favicon.png" />
+</head>
+<body>
+    <header>
+        <div class="logo"><a href="#">기온별 옷차림</a></div>
+        <div class="search"><input class="location-search" type="text" placeholder="도시를 검색해보세요."> <i
+                class="fas fa-search-location"></i></div>
+        <div class="country">KR, <i class="fas fa-globe-asia"></i></div>
+    </header>
+    <div class="flex-container">
+        <section class="weather-container">
+            <div class="weather-data">
+                <h1 class="location"><i class="fas fa-city"></i> </h1>
+                <div class="current-time"></div>
+            </div>
+            <div class="weather-temp">
+                <div class="current-temp"></div>
+                <div class="icon"></div>
+                <div class="feels-like">체감온도 </div>
+                <div class="max-temp"></div>
+                <div class="min-temp"></div>
+            </div>
+        </section>
+        <section class="clothes-container">
+            <ul class="today-clothes">
+            </ul>
+        </section>
+    </div>
+</body>
+</html>
