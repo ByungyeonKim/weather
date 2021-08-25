@@ -1,6 +1,5 @@
 'use strict';
-import './dotenv.js';
-import { apiKey } from './ev.js';
+import { apiKey } from './config.js';
 import Weather from './service/weather.js';
 const weather = new Weather(apiKey);
 
