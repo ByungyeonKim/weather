@@ -98,7 +98,7 @@ header {
   padding: 12px 0 8px 0;
 }
 
-.current-time {
+.time {
   color: darkgray;
   font-weight: 600;
   font-size: 1.2em;
@@ -109,11 +109,11 @@ header {
   margin-right: 5px;
 }
 
-.weather-temp {
+.temp-list {
   padding: 15px 0;
 }
 
-.current-temp {
+.temp {
   font-size: 3em;
   font-weight: 800;
 }
