@@ -7,3 +7,9 @@
 ## <img width="1536" alt="스크린샷 2020-11-25 오후 3 37 55" src="https://user-images.githubusercontent.com/66554164/100191893-4b1e1680-2f34-11eb-9bfd-aedc723c8f6f.png">
 
 <img width="1536" alt="스크린샷 2020-11-25 오후 3 05 09" src="https://user-images.githubusercontent.com/66554164/100191967-6be66c00-2f34-11eb-90b2-11aac2e2b6b1.png">
+
+## 8월 27일(금) 업데이트 1.0.1 📂
+
+- 좀 더 시멘틱한 태그로 변경
+- 온도 표시 함수 로직 변경(코드량 ⬇️)
+- API 호출 로직(service folder)과 메인 로직 분리
