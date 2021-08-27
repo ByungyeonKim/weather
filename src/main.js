@@ -1,11 +1,11 @@
 'use strict';
-import { apiKey } from './config.js';
+import apiKey from './config.js';
 import Weather from './service/weather.js';
 const weather = new Weather(apiKey);
 
 weather.getJSON((err, data) => {
   if (err !== null) {
-    alert('죄송합니다. 예상치 못한 오류가 발생했습니다.' + err);
+    console.error(new Error(`${err}, 예상치 못한 오류가 발생했습니다.`));
   } else {
     loadWeather(data);
     todayClothes(data);
@@ -15,12 +15,8 @@ weather.getJSON((err, data) => {
 
 function loadWeather(data) {
   let location = document.querySelector('.location');
-  let currentTime = document.querySelector('.current-time');
-  let currentTemp = document.querySelector('.current-temp');
-  let feelsLike = document.querySelector('.feels-like');
-  let minTemp = document.querySelector('.min-temp');
-  let maxTemp = document.querySelector('.max-temp');
-  let icon = document.querySelector('.icon');
+  let time = document.querySelector('.time');
+  let tempList = document.querySelector('.temp-list');
   let weatherIcon = data.weather[0].icon;
 
   let date = new Date();
@@ -30,20 +26,21 @@ function loadWeather(data) {
   let minutes = date.getMinutes();
 
   location.append(data.name);
-  currentTemp.append(`${data.main.temp}°`);
-  // currentTemp.append(`26°`);
-  feelsLike.append(`${data.main.feels_like}°`);
-  maxTemp.append(`최고:${data.main.temp_max}°`);
-  minTemp.append(`최저:${data.main.temp_min}°`);
-  icon.innerHTML = `<img src='http://openweathermap.org/img/wn/${weatherIcon}.png'>`;
-
-  currentTime.append(`${month}월 ${day}일 ${hours}:${minutes}`);
+  tempList.innerHTML = `
+          <li class="temp">${data.main.temp}°</li>
+          <li class="icon">
+            <img src='http://openweathermap.org/img/wn/${weatherIcon}.png'>
+          </li>
+          <li class="feels-temp">체감온도: ${data.main.feels_like}°</li>
+          <li class="max-temp">최고: ${data.main.temp_max}°</li>
+          <li class="min-temp">최저: ${data.main.temp_min}°</li>
+          `;
+  time.append(`${month}월 ${day}일 ${hours}시 ${minutes}분`);
 }
 
 function todayClothes(data) {
   let clothes = document.querySelector('.today-clothes');
   let currentTemp = data.main.temp;
-  // let currentTemp = 26;
 
   let winter = currentTemp <= 4;
   let earlyWinter = currentTemp >= 5 && currentTemp < 9;
@@ -128,7 +125,6 @@ function todayClothes(data) {
 function loadImg(data) {
   let background = document.querySelector('.flex-container');
   let currentTemp = data.main.temp;
-  // let currentTemp = 26;
 
   let winter = currentTemp <= 4;
   let earlyWinter = currentTemp >= 5 && currentTemp < 9;
