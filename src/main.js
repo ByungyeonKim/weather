@@ -4,27 +4,48 @@ import Weather from './service/weather.js';
 import temperature from './temperature.js';
 import clothes from './clothes.js';
 import background from './background.js';
+import date from './date.js';
 
 const weather = new Weather(apiKey);
+const searchBtn = document.querySelector('.fa-search-location');
+const input = document.querySelector('.location-search');
 
-weather.getJSON((err, data) => {
-  if (err !== null) {
-    console.error(new Error(`${err}, 에러 발생.`));
-  } else {
+weather
+  .getWeather() //
+  .then((data) => {
     temperature(data);
     background(data);
     clothes(data);
     date(data);
+  });
+
+const onSearch = () => {
+  const text = input.value;
+  if (text === '') {
+    input.focus();
+    return;
   }
+
+  const search = (query) => {
+    weather
+      .search(query) //
+      .then((data) => {
+        temperature(data);
+        background(data);
+        clothes(data);
+        date(data);
+      });
+  };
+  search(input.value);
+  input.focus();
+};
+
+searchBtn.addEventListener('click', () => {
+  onSearch();
 });
 
-function date() {
-  let time = document.querySelector('.time');
-  let date = new Date();
-  let month = date.getMonth() + 1;
-  let day = date.getDate();
-  let hours = date.getHours();
-  let minutes = date.getMinutes();
-
-  time.append(`${month}월 ${day}일 ${hours}시 ${minutes}분`);
-}
+input.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    onSearch();
+  }
+});
