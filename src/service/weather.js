@@ -1,28 +1,30 @@
-class Weather {
+export default class Weather {
   constructor(key) {
     this.key = key;
     this.baseURL = 'http://api.openweathermap.org';
+    this.getRequestOptions = {
+      method: 'GET',
+      redirect: 'follow',
+    };
   }
 
-  getJSON(callback) {
-    const xhr = new XMLHttpRequest();
+  getWeather() {
+    return fetch(
+      `${this.baseURL}/data/2.5/weather?q=seoul&appid=${this.key}&units=metric`,
+      this.getRequestOptions
+    )
+      .then((response) => response.json())
+      .then((data) => data)
+      .catch((error) => console.error(new Error(`에러 발생, ${error}`)));
+  }
 
-    // xhr.withCredentials = true;
-    xhr.responseType = 'json';
-    xhr.open(
-      'GET',
-      `${this.baseURL}/data/2.5/weather?q=seoul&appid=${this.key}&units=metric`
-    );
-    xhr.onload = () => {
-      const status = xhr.status;
-      if (status === 200) {
-        callback(null, xhr.response);
-      } else {
-        callback(status, xhr.response);
-      }
-    };
-    xhr.send();
+  search(query) {
+    return fetch(
+      `${this.baseURL}/data/2.5/weather?q=${query}&appid=${this.key}&units=metric`,
+      this.getRequestOptions
+    )
+      .then((response) => response.json())
+      .then((data) => data)
+      .catch((error) => console.error(new Error(`에러 발생, ${error}`)));
   }
 }
-
-export default Weather;
