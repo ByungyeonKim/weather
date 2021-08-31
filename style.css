@@ -1,116 +1,132 @@
-/* 전역 설정 */
-* {
-  outline: 0;
-  margin: 0;
+/* 아스키코드 문자열이 아닐 경우 UTF-8로 인코딩 셋 지정 */
+@charset "UTF-8";
+
+html, body, main, footer, div, span, p, h1, /* */
+h2, h3, em, strong, address {
   padding: 0;
+  margin: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
   box-sizing: border-box;
-  color: white;
-  list-style: none;
-}
-
-h1 {
-  padding: 12px;
-}
-
-h2 {
-  padding: 8px;
-  font-size: 1em;
-}
-
-html {
-  width: 100%;
-  height: 100%;
 }
 
 body {
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    180deg,
-    rgba(77, 43, 144, 1) 17%,
-    rgba(103, 58, 183, 1) 43%,
-    rgba(154, 103, 234, 1) 66%,
-    rgba(187, 154, 237, 1) 84%,
-    rgba(187, 154, 237, 1) 93%,
-    rgba(246, 246, 246, 1) 100%
-  );
-}
-
-a {
-  text-decoration: none;
-  color: white;
-}
-
-input {
-  border-radius: 4px;
-  border: none;
-  padding: 8px;
+  font: 'Apple SD Gothic Neo', 'Open Sans', sans-serif, '돋움', Dotum;
+  background-color: #272537;
+  color: #fff;
 }
 
 header {
-  max-width: 1080px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  padding: 16px;
-  height: 10%;
-  align-items: center;
-  background-color: #4d2c91;
+  padding: 28px;
 }
 
-/* 헤더 설정 */
-.search input {
-  padding-right: 20px;
-  color: black;
-  box-sizing: content-box;
+main {
+  max-width: 1080px;
+  padding: 12px 72px;
+  margin: auto;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  max-width: 1080px;
+  margin: auto;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.country {
+  font-size: 18px;
+}
+
+.search {
+  position: relative;
+}
+
+.location-search {
+  font-size: 14px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+}
+
+.search:hover::after {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  content: '영어만 가능합니다!\A ex) busan, london...';
+  white-space: pre;
+  background-color: #fff;
+  color: gray;
+  padding: 4px 16px;
+  border-radius: 4px;
 }
 
 .fa-search-location {
-  transform: translateX(-30px);
+  position: absolute;
+  top: 7px;
+  right: 7px;
   color: #4d2b90;
-}
-
-/* 플렉스 컨테이너 */
-.flex-container {
-  max-width: 1080px;
-  margin: auto;
-  height: 80%;
-  padding: 30px;
-  background: center/cover no-repeat;
-  position: relative;
-  border-radius: 4px;
-}
-
-/* 날씨 컨테이너 */
-.weather-container {
-  max-width: 30%;
-  height: 35%;
-  background-color: rgba(92, 107, 192, 0.9);
-  border-radius: 4px;
-  margin-left: auto;
-  padding: 16px 35px;
-  z-index: 99;
-  margin-bottom: 35px;
+  cursor: pointer;
 }
 
 .location {
-  font-size: 1.8rem;
-  padding: 12px 0 8px 0;
+  font-weight: 500;
 }
 
-.time {
-  color: darkgray;
-  font-weight: 600;
-  font-size: 1.2em;
+.weather-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
 }
 
-.icon {
-  float: left;
-  margin-right: 5px;
+.weather-img {
+  height: 350px;
+}
+
+.location {
+  font-size: 28px;
+  padding: 12px 0;
+}
+
+.weather-data {
+  display: grid;
+  grid-template-rows: 2.5fr 0.5fr;
+  gap: 24px;
+
+  height: 350px;
 }
 
 .temp-list {
-  padding: 15px 0;
+  display: grid;
+  place-items: center;
+
+  background-color: #5d34af;
+  padding: 32px 0;
+  border-radius: 4px;
+}
+
+.time {
+  display: grid;
+  place-items: center;
+
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #5d34af;
+  border-radius: 4px;
 }
 
 .temp {
@@ -118,22 +134,112 @@ header {
   font-weight: 800;
 }
 
-/* 옷차림 추천 컨테이너 */
-
-.clothes-container {
-  max-width: 30%;
-  background-color: rgba(92, 107, 192, 0.9);
-  margin-left: auto;
-  padding: 16px 35px;
-  border-radius: 4px;
+.contents-section {
+  display: grid;
   text-align: center;
+
+  gap: 16px;
 }
 
-.weather-img img {
-  width: 100%;
-  height: 100%;
+.suggestion {
+  font-size: 28.8px;
+  font-weight: 500;
+  padding: 48px 0 16px;
 }
 
-.weather-img {
-  max-width: 300px;
+.content {
+  border-radius: 4px;
+  padding: 32px;
+}
+
+.clothes {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #283593;
+}
+
+.suggestion-sub {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.clothes-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.clothes-list li {
+  background-color: rgba(38, 198, 218, 0.4);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.made-by {
+  background-color: #00acc1;
+  font-size: 32px;
+  font-weight: 800;
+}
+
+.link {
+  text-decoration: none;
+  color: #272537;
+}
+
+/* 모바일 */
+@media (max-width: 768px) {
+  main {
+    max-width: 540px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .country {
+    font-size: 14px;
+  }
+
+  .location-search {
+    font-size: 12px;
+  }
+
+  .location {
+    font-size: 21px;
+  }
+
+  .weather-img {
+    height: 250px;
+  }
+
+  .weather-section {
+    grid-template-columns: none;
+  }
+
+  .temp {
+    font-size: 32px;
+  }
+
+  .time {
+    font-size: 16px;
+  }
+
+  .suggestion {
+    font-size: 21px;
+  }
+
+  .suggestion-sub {
+    font-size: 18px;
+    margin-right: 12px;
+  }
+
+  .clothes-list li {
+    font-size: 12px;
+  }
+
+  .made-by {
+    font-size: 18px;
+  }
 }
