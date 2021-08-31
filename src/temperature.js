@@ -1,9 +1,11 @@
 export default function temperature(data) {
-  let location = document.querySelector('.location');
-  let tempList = document.querySelector('.temp-list');
-  let weatherIcon = data.weather[0].icon;
+  const location = document.querySelector('.location');
+  const tempList = document.querySelector('.temp-list');
+  const country = document.querySelector('.country');
+  const weatherIcon = data.weather[0].icon;
 
-  location.append(data.name);
+  country.innerHTML = `${data.sys.country}, <i class="fas fa-globe-asia"></i>`;
+  location.innerHTML = data.name;
   tempList.innerHTML = `
           <li class="temp">${data.main.temp}°</li>
           <li class="icon">
