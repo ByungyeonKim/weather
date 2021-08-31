@@ -1,8 +1,8 @@
 export default function background(data) {
-  const background = document.querySelector('.flex-container');
+  const background = document.querySelector('.weather-img');
   const temp = data.main.temp;
   const season = (url) => {
-    background.style.backgroundImage = `url(${url})`;
+    background.style.background = `url(${url}) no-repeat center/cover`;
   };
 
   if (temp <= 4) {
