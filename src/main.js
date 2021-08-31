@@ -17,7 +17,8 @@ weather
     background(data);
     clothes(data);
     date(data);
-  });
+  })
+  .catch((err) => console.error(new Error(err)));
 
 const onSearch = () => {
   const text = input.value;
@@ -34,7 +35,8 @@ const onSearch = () => {
         background(data);
         clothes(data);
         date(data);
-      });
+      })
+      .catch((err) => console.error(new Error(err)));
   };
   search(input.value);
   input.focus();
